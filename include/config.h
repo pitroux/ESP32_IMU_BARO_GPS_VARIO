@@ -48,8 +48,8 @@
 
 #define pinDRDYINT  4
 
-#define pinGpsTXD   21
-#define pinGpsRXD   22
+#define pinGpsTXD   34 //PCB2 need to be solder between 34 and Rx GPS
+#define pinGpsRXD   33 //PCB 2 22
 #define pinGpsRTS  (-1)
 #define pinGpsCTS  (-1)
 
@@ -57,8 +57,8 @@
 #define UART_RX_BUFFER_SIZE   256
 
 #define pinBtn0     0
-#define pinBtnL     36
-#define pinBtnM     34
+#define pinBtnL     38
+#define pinBtnM     37
 #define pinBtnR     39
 
 #define BTN0()	((GPIO.in >> pinBtn0) & 0x1)
@@ -94,12 +94,14 @@
 #define LED_ON()        {GPIO.out_w1ts = (1 << pinLED);}
 #define LED_OFF()       {GPIO.out_w1tc = (1 << pinLED);}
 
-#define pinAudioAmpEna  32
+#define pinAudioAmpEna  34 //PCB2 19
 #define pinAudioDAC     25
 
 // using NS8002 amp module, shutdown pin is pulled up to 5V via external 100K resistor. Pull down to enable
-#define AUDIO_AMP_ENABLE()   {GPIO.out1_w1tc.val = ((uint32_t)1 << (pinAudioAmpEna - 32));}
-#define AUDIO_AMP_DISABLE()  {GPIO.out1_w1ts.val = ((uint32_t)1 << (pinAudioAmpEna - 32));}
+//#define AUDIO_AMP_ENABLE()   {GPIO.out1_w1tc.val = ((uint32_t)1 << (pinAudioAmpEna - 32));}
+//#define AUDIO_AMP_DISABLE()  {GPIO.out1_w1ts.val = ((uint32_t)1 << (pinAudioAmpEna - 32));}
+#define AUDIO_AMP_ENABLE()
+#define AUDIO_AMP_DISABLE()
 
 #define FLASH_W25Q128  // 128Mbit 104MHz
 
